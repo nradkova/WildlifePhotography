@@ -46,14 +46,11 @@ function generateToken(user) {
     return jwt.sign({
         _id: user.id,
         email: user.email,
-        // username: user.username,
     }, TOKEN_SECRET);
 }
 
 async function register(firstName,lastName,email, password){
     const existing=await getUserByEmail(email);
-    // const existing=await getUserByUsername(username);
-
     if(existing){
         throw new Error('User with such email already exists!')
     }
@@ -66,14 +63,12 @@ async function register(firstName,lastName,email, password){
 
 async function login(email,password){
      const user=await getUserByEmail(email);
-    //  const user=await getUserByUsername(username);
      if(!user){
          throw new Error ('User with such email does not exist!')
      }
      const hasMatch=await bcrypt.compare(password,user.hashedPassword);
      if(!hasMatch){
          throw new Error('Invalid email or password!')
-        //  throw new Error('Invalid username or password!')
      }
      return generateToken(user);
 }
