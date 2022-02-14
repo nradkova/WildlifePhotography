@@ -1,5 +1,5 @@
 # Wildlife Photography
-![screenshot](Screenshot_Wildlife.png)
+![screenshot](screenshot.png)
 
 ## A project for SoftUni JS Back-end course /exam/
 
